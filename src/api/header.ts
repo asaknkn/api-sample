@@ -1,12 +1,16 @@
 import * as crypto from 'crypto'
 
 export const getAuthorization = (path:string, method:string, requestBody = ""):string =>{
-  const apiKey = "xxxxx"
-  const apiSecret = "xxxx"
+  const apiKey = process.env.VUE_APP_API_KEY
+  let apiSecret = process.env.VUE_APP_API_SECRET
   const timestamp = getTimeStamp()
   const nonce = getNonce()
   let contentTpye
   let hash
+
+  if (apiSecret === undefined) {
+    apiSecret = '1234'
+  }
 
   if (requestBody === "") {
     contentTpye = "empty"

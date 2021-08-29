@@ -1,12 +1,15 @@
 import * as crypto from 'crypto';
 export var getAuthorization = function (path, method, requestBody) {
     if (requestBody === void 0) { requestBody = ""; }
-    var apiKey = "xxxxx";
-    var apiSecret = "xxxx";
+    var apiKey = process.env.VUE_APP_API_KEY;
+    var apiSecret = process.env.VUE_APP_API_SECRET;
     var timestamp = getTimeStamp();
     var nonce = getNonce();
     var contentTpye;
     var hash;
+    if (apiSecret === undefined) {
+        apiSecret = '1234';
+    }
     if (requestBody === "") {
         contentTpye = "empty";
         hash = "empty";

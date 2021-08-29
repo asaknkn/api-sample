@@ -62,7 +62,7 @@ export default class CreateCode extends Vue {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': authorization,
-        'X-ASSUME-MERCHANT': 'xxxx'
+        'X-ASSUME-MERCHANT': process.env.VUE_APP_ASSUME_MERCHANT
       }
     }).then(res => {
       console.log(res)

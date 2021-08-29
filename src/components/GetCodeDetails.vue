@@ -46,7 +46,7 @@ export default class GetCodeDetails extends Vue {
       url: `${path}${this.id}`,
       headers: {
         'Authorization': authorization,
-        'X-ASSUME-MERCHANT': 'xxxx'
+        'X-ASSUME-MERCHANT': process.env.VUE_APP_ASSUME_MERCHANT
       }
     }).then(res => {
       console.log(res)
