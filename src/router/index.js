@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import MiniApps from '../views/MiniApps.vue';
+import WebPayment from '../views/WebPayment.vue';
 Vue.use(VueRouter);
-var routes = [
+export var routes = [
     {
         path: '/',
         name: 'Home',
@@ -11,15 +13,17 @@ var routes = [
     {
         path: '/webpayment',
         name: 'WebPayment',
-        component: function () { return import(/* webpackChunkName: "about" */ '../views/WebPayment.vue'); }
+        component: WebPayment
+        // component: () => import(/* webpackChunkName: "about" */ '../views/WebPayment.vue')
     },
     {
         path: '/about',
         name: 'About',
+        component: MiniApps
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: function () { return import(/* webpackChunkName: "about" */ '../views/MiniApps.vue'); }
+        // component: () => import(/* webpackChunkName: "about" */ '../views/MiniApps.vue')
     }
 ];
 var router = new VueRouter({
