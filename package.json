@@ -10,7 +10,6 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@paypay/mini-app-js-sdk": "^1.14.2",
     "@types/node": "^16.7.2",
     "@vue/cli-plugin-babel": "^4.5.13",
     "axios": "^0.21.1",
@@ -54,9 +53,6 @@
       "^.+\\.tsx?$": "ts-jest",
       "^.+\\.jsx?$": "babel-jest"
     },
-    "transformIgnorePatterns": [
-      "/node_modules/(?!@paypay/)"
-    ],
     "testURL": "http://localhost/",
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$"
   }
