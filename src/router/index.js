@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import WebPayment from '../views/WebPayment.vue';
 Vue.use(VueRouter);
 export var routes = [
     {
@@ -12,8 +11,8 @@ export var routes = [
     {
         path: '/webpayment',
         name: 'WebPayment',
-        component: WebPayment
-        // component: () => import(/* webpackChunkName: "about" */ '../views/WebPayment.vue')
+        //component: WebPayment
+        component: function () { return import(/* webpackChunkName: "about" */ '../views/WebPayment.vue'); }
     },
 ];
 var router = new VueRouter({

@@ -14,8 +14,8 @@ export const routes: Array<RouteConfig> = [
   {
     path: '/webpayment',
     name: 'WebPayment',
-    component: WebPayment
-    // component: () => import(/* webpackChunkName: "about" */ '../views/WebPayment.vue')
+    //component: WebPayment
+    component: () => import(/* webpackChunkName: "about" */ '../views/WebPayment.vue')
   },
 ]
 
