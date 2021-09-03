@@ -4,5 +4,5 @@ export interface orderItem {
     category: string
     quantity: number
     productId: string
-    unitPrice: amount
+    unit_price: amount
 }

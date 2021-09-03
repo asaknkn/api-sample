@@ -14,7 +14,7 @@ describe('WebPayment.vue', function () {
                     return [4 /*yield*/, options.at(0).setSelected()];
                 case 1:
                     _a.sent();
-                    expect(wrapper.find('option:checked').element.innerHTML).toBe('Please select one api');
+                    expect(wrapper.find('option:checked').text()).toBe('Please select one api');
                     return [2 /*return*/];
             }
         });
@@ -30,7 +30,7 @@ describe('WebPayment.vue', function () {
                 case 1:
                     _a.sent();
                     createCode = wrapper.findComponent(CreateCode);
-                    expect(wrapper.find('option:checked').element.innerHTML).toBe('Create a Code');
+                    expect(wrapper.find('option:checked').text()).toBe('Create a Code');
                     expect(createCode.exists()).toBe(true);
                     return [2 /*return*/];
             }
@@ -47,7 +47,7 @@ describe('WebPayment.vue', function () {
                 case 1:
                     _a.sent();
                     createCode = wrapper.findComponent(GetCodeDetails);
-                    expect(wrapper.find('option:checked').element.innerHTML).toBe('Get payment details');
+                    expect(wrapper.find('option:checked').text()).toBe('Get payment details');
                     expect(createCode.exists()).toBe(true);
                     return [2 /*return*/];
             }

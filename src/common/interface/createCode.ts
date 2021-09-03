@@ -30,10 +30,12 @@ interface data {
   deeplink: string
   expiryDate: number
   merchantPaymentId: string
-  amout: amount
+  amount: amount
   orderDescription: string
   orderItems: orderItem[]
+  codeType: string
   storeInfo: string
+  storeId: string
   terminalId: string
   requestedAt: number
   redirectUrl: string

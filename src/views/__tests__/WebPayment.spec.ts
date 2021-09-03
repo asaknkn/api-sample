@@ -9,7 +9,7 @@ describe('WebPayment.vue', () => {
     const options = wrapper.find('select').findAll('option')
     await options.at(0).setSelected()
 
-    expect(wrapper.find('option:checked').element.innerHTML).toBe('Please select one api')
+    expect(wrapper.find('option:checked').text()).toBe('Please select one api')
   })
 
   it('selected Create a Code', async () => {
@@ -19,7 +19,7 @@ describe('WebPayment.vue', () => {
 
     const createCode = wrapper.findComponent(CreateCode)
 
-    expect(wrapper.find('option:checked').element.innerHTML).toBe('Create a Code')
+    expect(wrapper.find('option:checked').text()).toBe('Create a Code')
     expect(createCode.exists()).toBe(true)
   })
 
@@ -30,7 +30,7 @@ describe('WebPayment.vue', () => {
 
     const createCode = wrapper.findComponent(GetCodeDetails)
 
-    expect(wrapper.find('option:checked').element.innerHTML).toBe('Get payment details')
+    expect(wrapper.find('option:checked').text()).toBe('Get payment details')
     expect(createCode.exists()).toBe(true)
   })
 })
