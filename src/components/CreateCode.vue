@@ -24,7 +24,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import {createCodeReqest, createCodeResponse} from '@/common/interface/createCode'
-import {getAuthorization} from '@/api/header'
+// import {getAuthorization} from '@/api/header'
 import axios from 'axios'
 
 @Component
@@ -72,7 +72,6 @@ export default class CreateCode extends Vue {
     axios.post(path, requestBody)
     .then(res => {
       this.response = JSON.parse(res.data)
-      console.log("response",this.response)
     }).catch(err => {
       console.log(err)
     })

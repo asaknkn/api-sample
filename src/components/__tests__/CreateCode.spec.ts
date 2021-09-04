@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { mount, Wrapper } from '@vue/test-utils'
 import CreateCode from '@/components/CreateCode.vue'
 import {createCodeReqest, createCodeResponse} from '@/common/interface/createCode'
 import flushPromises from "flush-promises"
@@ -26,15 +26,8 @@ describe('CreateCode.vue', () => {
     expect(tableHeadRows.at(2).text()).toBe('currency')
   })
 
-  it('triggers a click', async () => {
+  it('when triggers a click, response success ', async () => {
     const wrapper = mount(CreateCode)
-
-    //const vm = wrapper.vm
-    wrapper.setData({
-      requestParams: {
-        merchantPaymentId: "20210806-02",
-      },
-    })
 
     const response: createCodeResponse = {
       resultInfo: {
@@ -80,7 +73,6 @@ describe('CreateCode.vue', () => {
     await wrapper.find('button').trigger('click')
     await flushPromises()
 
-   expect(wrapper.vm.$data.response).toEqual(response)
-
+    expect(wrapper.vm.$data.response).toEqual(response)
   })
 })

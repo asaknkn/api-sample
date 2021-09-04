@@ -20,18 +20,12 @@ describe('CreateCode.vue', function () {
         expect(tableHeadRows.at(1).text()).toBe('amount');
         expect(tableHeadRows.at(2).text()).toBe('currency');
     });
-    it('triggers a click', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('when triggers a click, response success ', function () { return __awaiter(void 0, void 0, void 0, function () {
         var wrapper, response;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     wrapper = mount(CreateCode);
-                    //const vm = wrapper.vm
-                    wrapper.setData({
-                        requestParams: {
-                            merchantPaymentId: "20210806-02",
-                        },
-                    });
                     response = {
                         resultInfo: {
                             code: "string",
