@@ -6,7 +6,7 @@ import axios from 'axios'
 
 Vue.config.productionTip = false
 
-axios.defaults.baseURL = "https://stg-api.sandbox.paypay.ne.jp"
+// axios.defaults.baseURL = "http://localhost:8080"
 
 new Vue({
   router,

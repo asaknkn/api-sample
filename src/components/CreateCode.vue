@@ -15,9 +15,26 @@
       </tbody>
     </table>
     <br><br>
-    {{response}}
-    <br><br>
     <button @click="createCode">実行</button>
+    <br><br>
+    <table align="center" border="1" style="border-collapse: collapse">
+      <thead v-if="response != ''">
+          <tr>
+              <th>Paramenter</th>
+              <th>Value</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr v-for="(value, name) in response.resultInfo" :key="name">
+              <td>{{name}}</td>
+              <td>{{value}}</td>
+          </tr>
+          <tr v-for="(value, name) in response.data" :key="name">
+              <td>{{name}}</td>
+              <td>{{value}}</td>
+          </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -35,16 +52,10 @@ export default class CreateCode extends Vue {
     currency: "JPY",
   }
 
-  response: createCodeResponse = {
-    resultInfo: {
-      code: "",
-      message: "",
-      codeId: ""
-    },
-  }
+  response: createCodeResponse | string = ""
 
   createCode():void {
-    const path = "v2/codes"
+    const path = "/v2/codes"
     const requestBody: createCodeReqest = {
       merchantPaymentId: this.requestParams.merchantPaymentId,
       amount: {
@@ -71,7 +82,8 @@ export default class CreateCode extends Vue {
     // })
     axios.post(path, requestBody)
     .then(res => {
-      this.response = JSON.parse(res.data)
+      console.log(res)
+      this.response = res.data
     }).catch(err => {
       console.log(err)
     })
