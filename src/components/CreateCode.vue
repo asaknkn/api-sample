@@ -17,19 +17,19 @@
     <br><br>
     <button @click="createCode">実行</button>
     <br><br>
-    <table align="center" border="1" style="border-collapse: collapse">
-      <thead v-if="response != ''">
+    <table v-if="response.resultInfo.code != ''" align="center" border="1" style="border-collapse: collapse">
+      <thead>
           <tr>
               <th>Paramenter</th>
               <th>Value</th>
           </tr>
       </thead>
       <tbody>
-          <tr v-for="(value, name) in response.resultInfo" :key="name">
+          <tr v-for="(value, name) in response.resultInfo" :key="`resultInfo-${name}`">
               <td>{{name}}</td>
               <td>{{value}}</td>
           </tr>
-          <tr v-for="(value, name) in response.data" :key="name">
+          <tr v-for="(value, name) in response.data" :key="`data-${name}`">
               <td>{{name}}</td>
               <td>{{value}}</td>
           </tr>
@@ -47,12 +47,18 @@ import axios from 'axios'
 @Component
 export default class CreateCode extends Vue {
   requestParams = {
-    merchantPaymentId: "20210806-01",
+    merchantPaymentId: "202108066-01",
     amount: 100,
     currency: "JPY",
   }
 
-  response: createCodeResponse | string = ""
+  response: createCodeResponse = {
+    resultInfo: {
+      code: "",
+      message: "",
+      codeId: "",
+    },
+  }
 
   createCode():void {
     const path = "/v2/codes"
@@ -84,6 +90,11 @@ export default class CreateCode extends Vue {
     .then(res => {
       console.log(res)
       this.response = res.data
+
+      if (confirm("Do you move to PayPay cashier")) {
+        open(this.response.data?.url, '_blank')
+      }
+      
     }).catch(err => {
       console.log(err)
     })
