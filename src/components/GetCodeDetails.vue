@@ -15,9 +15,26 @@
       </tbody>
     </table>
     <br><br>
-    {{response}}
-    <br><br>
     <button @click="getPaymentDetails">実行</button>
+    <br><br>
+    <table v-if="response.resultInfo.code != ''" align="center" border="1" style="border-collapse: collapse">
+      <thead>
+          <tr>
+              <th>Paramenter</th>
+              <th>Value</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr v-for="(value, name) in response.resultInfo" :key="`resultInfo-${name}`">
+              <td>{{name}}</td>
+              <td>{{value}}</td>
+          </tr>
+          <tr v-for="(value, name) in response.data" :key="`data-${name}`">
+              <td>{{name}}</td>
+              <td>{{value}}</td>
+          </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -40,16 +57,10 @@ export default class GetCodeDetails extends Vue {
 
   getPaymentDetails():void {
     const path = "/v2/codes/payments/"
-    const authorization = getAuthorization(path, "GET")
-    axios({
-      method: 'get',
-      url: `${path}${this.id}`,
-      headers: {
-        'Authorization': authorization,
-        'X-ASSUME-MERCHANT': process.env.VUE_APP_ASSUME_MERCHANT
-      }
-    }).then(res => {
+    axios.get(`${path}${this.id}`)
+    .then(res => {
       console.log(res)
+      this.response = res.data
     }).catch(err => {
       console.log(err)
     })
