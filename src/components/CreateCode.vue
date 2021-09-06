@@ -70,22 +70,6 @@ export default class CreateCode extends Vue {
       },
       codeType: "ORDER_QR",
     }
-    // const authorization = getAuthorization(path, "POST", JSON.stringify(requestBody))
-    // axios({
-    //   method: 'post',
-    //   url: path,
-    //   data: requestBody,
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': authorization,
-    //     'X-ASSUME-MERCHANT': process.env.VUE_APP_ASSUME_MERCHANT
-    //   }
-    // }).then(res => {
-    //   console.log(res)
-    //   this.response = res.data
-    // }).catch(err => {
-    //   console.log(err)
-    // })
     axios.post(path, requestBody)
     .then(res => {
       console.log(res)
