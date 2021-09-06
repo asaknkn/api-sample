@@ -1,12 +1,12 @@
 import { resultInfo } from "./commonResponse";
 import { amount } from "./amount";
-import { orderItem } from "./orderItem"; 
+import { orderItem, orderRequestItem } from "./orderItem"; 
 
 export interface createCodeReqest {
   merchantPaymentId: string
   amount: amount
   orderDescription?: string
-  orderItems?: orderItem[]
+  orderItems?: orderRequestItem[]
   codeType: string
   storeInfo?: string
   storeId?: string

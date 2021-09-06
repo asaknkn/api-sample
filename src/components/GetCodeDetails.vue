@@ -41,7 +41,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import {getCodeDetailsResponse} from '@/common/interface/getCodeDetails'
-import {getAuthorization} from '@/api/header'
 import axios from 'axios'
 
 @Component

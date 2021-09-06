@@ -6,3 +6,11 @@ export interface orderItem {
     productId: string
     unit_price: amount
 }
+
+export interface orderRequestItem {
+    name: string
+    category: string
+    quantity: number
+    productId: string
+    unitPrice: amount
+}
