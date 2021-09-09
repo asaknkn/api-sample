@@ -63,7 +63,7 @@ export default class CreateCode extends Vue {
     redirectUrl: "",
     redirectType: "",
     userAgent: "",
-    isAuthorization: false,
+    isAuthorization: "false",
     authorizationExpiry: "0"
   }
 
@@ -121,7 +121,7 @@ export default class CreateCode extends Vue {
       redirectUrl: this.requestParams.redirectUrl,
       redirectType: this.requestParams.redirectType,
       userAgent: this.requestParams.userAgent,
-      isAuthorization: this.requestParams.isAuthorization,
+      isAuthorization: this.requestParams.isAuthorization === "true",
       authorizationExpiry: +this.requestParams.authorizationExpiry
     }
   }
