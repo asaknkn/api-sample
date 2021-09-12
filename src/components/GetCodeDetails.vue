@@ -40,13 +40,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import {getCodeDetailsResponse} from '@/common/interface/getCodeDetails'
+import {response} from '@/common/interface/getCodeDetails'
 import axios from 'axios'
 
 @Component
 export default class GetCodeDetails extends Vue {
   id = "20210806-01"
-  response: getCodeDetailsResponse = {
+  response: response = {
     resultInfo: {
       code: "",
       message: "",
@@ -61,7 +61,9 @@ export default class GetCodeDetails extends Vue {
       console.log(res)
       this.response = res.data
     }).catch(err => {
-      console.log(err)
+      if (err.response.data != null) {
+        this.response = err.response.data
+      }
     })
   }
 }

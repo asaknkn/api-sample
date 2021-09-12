@@ -2,7 +2,7 @@ import { resultInfo } from "./commonResponse";
 import { amount } from "./amount";
 import { orderItem, orderRequestItem } from "./orderItem"; 
 
-export interface createCodeReqest {
+export interface request {
   merchantPaymentId: string
   amount: amount
   orderDescription?: string
@@ -19,7 +19,7 @@ export interface createCodeReqest {
   authorizationExpiry?: number
 }
 
-export interface createCodeResponse {
+export interface response {
   resultInfo: resultInfo
   data?: data
 }

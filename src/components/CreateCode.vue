@@ -40,7 +40,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import {createCodeReqest, createCodeResponse} from '@/common/interface/createCode'
+import {request, response} from '@/common/interface/createCode'
 // import {getAuthorization} from '@/api/header'
 import axios from 'axios'
 
@@ -67,7 +67,7 @@ export default class CreateCode extends Vue {
     authorizationExpiry: "0"
   }
 
-  response: createCodeResponse = {
+  response: response = {
     resultInfo: {
       code: "",
       message: "",
@@ -89,11 +89,13 @@ export default class CreateCode extends Vue {
       
     }).catch(err => {
       console.log(err.response)
-      this.response = err.response.data
+      if (err.response.data != null) {
+        this.response = err.response.data
+      }
     })
   }
 
-  private newRequestBody(): createCodeReqest {
+  private newRequestBody(): request {
     return {
       merchantPaymentId: this.requestParams.merchantPaymentId,
       amount: {

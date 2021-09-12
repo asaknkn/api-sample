@@ -5,27 +5,23 @@
       <option v-for="option in options" :key="option">{{option}}</option>
     </select>
     <br><br>
-    <CreateCode v-if="selected === 'Create a Code'"></CreateCode>
-    <GetCodeDetails v-else-if="selected === 'Get payment details'"></GetCodeDetails>
+    <CreateAccountLinkQRCode v-if="selected === 'Create Account Link QR Code'"></CreateAccountLinkQRCode>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import CreateCode from '@/components/CreateCode.vue'
-import GetCodeDetails from '@/components/GetCodeDetails.vue'
+import CreateAccountLinkQRCode from '@/components/CreateAccountLinkQRCode.vue'
 
 @Component({
   components: {
-    CreateCode,
-    GetCodeDetails,
+    CreateAccountLinkQRCode,
   },
 })
-export default class WebPayment extends Vue {
+export default class UserAccount extends Vue {
   selected = ""
   options = [
-    "Create a Code",
-    "Get payment details",
+    "Create Account Link QR Code",
   ]
 }
 </script>

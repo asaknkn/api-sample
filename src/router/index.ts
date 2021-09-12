@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
-import WebPayment from '../views/WebPayment.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +15,11 @@ export const routes: Array<RouteConfig> = [
     name: 'WebPayment',
     //component: WebPayment
     component: () => import(/* webpackChunkName: "about" */ '../views/WebPayment.vue')
+  },
+  {
+    path: '/useraccount',
+    name: 'UserAccount',
+    component: () => import(/* webpackChunkName: "about" */ '../views/UserAccount.vue')
   },
 ]
 

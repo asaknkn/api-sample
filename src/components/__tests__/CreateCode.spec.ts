@@ -1,6 +1,6 @@
 import { mount, Wrapper } from '@vue/test-utils'
 import CreateCode from '@/components/CreateCode.vue'
-import {createCodeReqest, createCodeResponse} from '@/common/interface/createCode'
+import {response} from '@/common/interface/createCode'
 import flushPromises from "flush-promises"
 import axios from "axios"
 
@@ -29,7 +29,7 @@ describe('CreateCode.vue', () => {
   it('when triggers a click, response success ', async () => {
     const wrapper = mount(CreateCode)
 
-    const response: createCodeResponse = {
+    const response: response = {
       resultInfo: {
         code: "string",
         message: "string",

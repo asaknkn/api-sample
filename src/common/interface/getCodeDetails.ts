@@ -2,7 +2,7 @@ import { resultInfo } from "./commonResponse";
 import { amount } from "./amount";
 import { orderItem } from "./orderItem"; 
 
-export interface getCodeDetailsResponse {
+export interface response {
   resultInfo: resultInfo
   data?: data
 }

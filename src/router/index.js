@@ -14,6 +14,11 @@ export var routes = [
         //component: WebPayment
         component: function () { return import(/* webpackChunkName: "about" */ '../views/WebPayment.vue'); }
     },
+    {
+        path: '/useraccount',
+        name: 'UserAccount',
+        component: function () { return import(/* webpackChunkName: "about" */ '../views/UserAccount.vue'); }
+    },
 ];
 var router = new VueRouter({
     mode: 'history',
