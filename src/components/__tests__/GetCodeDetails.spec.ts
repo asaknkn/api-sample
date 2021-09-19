@@ -103,7 +103,7 @@ describe('GetCodeDetails.vue', () => {
 
     expect(th.at(0).text()).toBe('Paramenter')
     expect(th.at(1).text()).toBe('Value')
-    expect(td.at(0).text()).toBe("id");
+    expect(td.at(0).text()).toBe("merchantPaymentId");
   })
 
   it('output table does not exist', () => {

@@ -17,7 +17,7 @@ import axios from 'axios'
 })
 export default class GetCodeDetails extends Vue {
   requestParams:inputRequest = {
-    id: "20210806-01"
+    merchantPaymentId: "20210806-01"
   }
   response: response = {
     resultInfo: {
@@ -29,7 +29,7 @@ export default class GetCodeDetails extends Vue {
 
   getPaymentDetails(value: inputRequest):void {
     const path = "/v2/codes/payments/"
-    const id = value.id
+    const id = value.merchantPaymentId
     axios.get(`${path}${id}`)
     .then(res => {
       console.log(res)

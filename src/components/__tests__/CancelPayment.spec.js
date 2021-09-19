@@ -1,13 +1,13 @@
 import { __assign, __awaiter, __generator } from "tslib";
 import { mount } from '@vue/test-utils';
-import GetCodeDetails from '@/components/GetCodeDetails.vue';
+import CancelPayment from '@/components/CancelPayment.vue';
 import flushPromises from "flush-promises";
 import axios from "axios";
 jest.mock("axios");
 var mockedAxios = axios;
 var factory = function (values) {
     if (values === void 0) { values = {}; }
-    return mount(GetCodeDetails, {
+    return mount(CancelPayment, {
         data: function () {
             return __assign({}, values);
         }
@@ -19,78 +19,10 @@ var newResonse = function () {
             code: "string",
             message: "string",
             codeId: "string"
-        },
-        data: {
-            paymentId: "string",
-            status: "string",
-            acceptedAt: 0,
-            refunds: {
-                data: [
-                    {
-                        status: "string",
-                        acceptedAt: 0,
-                        merchantRefundId: "string",
-                        paymentId: "string",
-                        amount: {
-                            amount: 0,
-                            currency: "JPY"
-                        },
-                        requestedAt: 0,
-                        reason: "string",
-                    }
-                ],
-            },
-            captures: {
-                data: [
-                    {
-                        acceptedAt: 0,
-                        merchantCaptureId: "string",
-                        amount: {
-                            amount: 0,
-                            currency: "JPY"
-                        },
-                        orderDescription: "string",
-                        requestedAt: 0,
-                        expiresAt: 0,
-                        status: "string",
-                    }
-                ],
-            },
-            revert: {
-                acceptedAt: 0,
-                merchantRevertId: "string",
-                requestedAt: 0,
-                reason: "string",
-            },
-            merchantPaymentId: "string",
-            amount: {
-                amount: 0,
-                currency: "JPY"
-            },
-            requestedAt: 0,
-            expiresAt: 0,
-            canceledAt: 0,
-            storeId: "string",
-            terminalId: "string",
-            orderReceiptNumber: "string",
-            orderDescription: "string",
-            orderItems: [
-                {
-                    name: "string",
-                    category: "string",
-                    quantity: 1,
-                    productId: "string",
-                    unit_price: {
-                        amount: 0,
-                        currency: "JPY"
-                    }
-                }
-            ],
-            metadata: {}
         }
     };
 };
-describe('GetCodeDetails.vue', function () {
+describe('DeleteCode.vue', function () {
     it('input table has expeteced colums', function () {
         var wrapper = factory();
         var th = wrapper.findAll('table > thead > tr > th');
@@ -121,7 +53,7 @@ describe('GetCodeDetails.vue', function () {
                 case 0:
                     wrapper = factory();
                     response = newResonse();
-                    mockedAxios.get.mockResolvedValueOnce({ data: response });
+                    mockedAxios.delete.mockResolvedValueOnce({ data: response });
                     return [4 /*yield*/, wrapper.find('button').trigger('click')];
                 case 1:
                     _a.sent();
@@ -140,7 +72,7 @@ describe('GetCodeDetails.vue', function () {
                 case 0:
                     wrapper = factory();
                     response = newResonse();
-                    mockedAxios.get.mockRejectedValueOnce({ response: { data: response } });
+                    mockedAxios.delete.mockRejectedValueOnce({ response: { data: response } });
                     return [4 /*yield*/, wrapper.find('button').trigger('click')];
                 case 1:
                     _a.sent();
@@ -153,4 +85,4 @@ describe('GetCodeDetails.vue', function () {
         });
     }); });
 });
-//# sourceMappingURL=GetCodeDetails.spec.js.map
+//# sourceMappingURL=CancelPayment.spec.js.map

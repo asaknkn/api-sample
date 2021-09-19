@@ -3,7 +3,7 @@ import { amount } from "./amount";
 import { orderItem } from "./orderItem"; 
 
 export interface inputRequest {
-  id: string
+  merchantPaymentId: string
 }
 export interface response {
   resultInfo: resultInfo
