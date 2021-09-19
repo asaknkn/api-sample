@@ -2,6 +2,9 @@ import { resultInfo } from "./commonResponse";
 import { amount } from "./amount";
 import { orderItem } from "./orderItem"; 
 
+export interface inputRequest {
+  id: string
+}
 export interface response {
   resultInfo: resultInfo
   data?: data

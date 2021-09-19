@@ -90,12 +90,12 @@ var newResonse = function () {
         }
     };
 };
-describe('CreateCode.vue', function () {
+describe('GetCodeDetails.vue', function () {
     it('input table has expeteced colums', function () {
         var wrapper = factory();
         var th = wrapper.findAll('table > thead > tr > th');
         var td = wrapper.findAll('table > tbody > tr > td');
-        expect(th.at(0).text()).toBe('Path Paramenter');
+        expect(th.at(0).text()).toBe('Paramenter');
         expect(th.at(1).text()).toBe('Value');
         expect(td.at(0).text()).toBe("id");
     });

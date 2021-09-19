@@ -95,13 +95,13 @@ const newResonse = ():response => {
   }
 }
 
-describe('CreateCode.vue', () => {
+describe('GetCodeDetails.vue', () => {
   it('input table has expeteced colums', () => {
     const wrapper = factory()
     const th = wrapper.findAll('table > thead > tr > th')
     const td = wrapper.findAll('table > tbody > tr > td')
 
-    expect(th.at(0).text()).toBe('Path Paramenter')
+    expect(th.at(0).text()).toBe('Paramenter')
     expect(th.at(1).text()).toBe('Value')
     expect(td.at(0).text()).toBe("id");
   })

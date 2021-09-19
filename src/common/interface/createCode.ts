@@ -2,6 +2,27 @@ import { resultInfo } from "./commonResponse";
 import { amount } from "./amount";
 import { orderItem, orderRequestItem } from "./orderItem"; 
 
+export interface inputRequest {
+  merchantPaymentId: string
+  amount: string
+  currency: string
+  orderDescription: string
+  orderItemName: string
+  orderItemCategory: string
+  orderquantity: string
+  orderItemProductId: string
+  unitPriceAmount: string
+  unitPriceCurrency: string
+  storeInfo: string
+  storeId: string
+  terminalId: string
+  redirectUrl: string
+  redirectType: string
+  userAgent: string
+  isAuthorization: string
+  authorizationExpiry: string
+}
+
 export interface request {
   merchantPaymentId: string
   amount: amount

@@ -1,52 +1,23 @@
 <template>
   <div class="createcode">
-    <table align="center">
-      <thead>
-          <tr>
-              <th>Paramenter</th>
-              <th>Value</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr v-for="(value, name) in requestParams" :key="name">
-              <td>{{name}}</td>
-              <td><input v-model="requestParams[name]" type="text"></td>
-          </tr>
-      </tbody>
-    </table>
-    <br><br>
-    <button @click="createCode">実行</button>
-    <br><br>
-    <table v-if="response.resultInfo.code != ''" align="center" border="1" style="border-collapse: collapse">
-      <thead>
-          <tr>
-              <th>Paramenter</th>
-              <th>Value</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr v-for="(value, name) in response.resultInfo" :key="`resultInfo-${name}`">
-              <td>{{name}}</td>
-              <td>{{value}}</td>
-          </tr>
-          <tr v-for="(value, name) in response.data" :key="`data-${name}`">
-              <td>{{name}}</td>
-              <td>{{value}}</td>
-          </tr>
-      </tbody>
-    </table>
+    <Table :request-params="requestParams" :response="response" @call-api="createCode"></Table>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import {request, response} from '@/common/interface/createCode'
+import {inputRequest, request, response} from '@/common/interface/createCode'
+import Table from '@/components/Table.vue'
 // import {getAuthorization} from '@/api/header'
 import axios from 'axios'
 
-@Component
+@Component({
+  components: {
+    Table
+  }
+})
 export default class CreateCode extends Vue {
-  requestParams = {
+  requestParams:inputRequest = {
     merchantPaymentId: "202108066-01",
     amount: "100",
     currency: "JPY",
@@ -95,6 +66,9 @@ export default class CreateCode extends Vue {
     })
   }
 
+// the prop is an object for Table(child) component.
+// mutating requestParams itself inside the child component will affect parent state.
+// I understand this is not good way.
   private newRequestBody(): request {
     return {
       merchantPaymentId: this.requestParams.merchantPaymentId,
