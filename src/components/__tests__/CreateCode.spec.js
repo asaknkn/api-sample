@@ -1,54 +1,48 @@
-import { __awaiter, __generator } from "tslib";
+import { __assign, __awaiter, __generator } from "tslib";
 import { mount } from '@vue/test-utils';
 import CreateCode from '@/components/CreateCode.vue';
 import flushPromises from "flush-promises";
 import axios from "axios";
 jest.mock("axios");
 var mockedAxios = axios;
+var factory = function (values) {
+    if (values === void 0) { values = {}; }
+    return mount(CreateCode, {
+        data: function () {
+            return __assign({}, values);
+        }
+    });
+};
 describe('CreateCode.vue', function () {
     it('input table has expeteced colums', function () {
-        var wrapper = mount(CreateCode);
+        var wrapper = factory();
         var tableHeadRows = wrapper.findAll('table > thead > tr > th');
         var tableBodyRows = wrapper.findAll('table > tbody > tr');
         expect(tableHeadRows.at(0).text()).toBe('Paramenter');
         expect(tableHeadRows.at(1).text()).toBe('Value');
         expect(tableBodyRows.length).toBe(18);
     });
-    it('output table does not exist', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var wrapper, tables;
-        return __generator(this, function (_a) {
-            wrapper = mount(CreateCode);
-            tables = wrapper.findAll('table');
-            expect(tables.length).toBe(1);
-            return [2 /*return*/];
-        });
-    }); });
-    it('output table  exists', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var wrapper, tables;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    wrapper = mount(CreateCode);
-                    return [4 /*yield*/, wrapper.setData({ response: {
-                                resultInfo: {
-                                    code: "sample"
-                                }
-                            } })];
-                case 1:
-                    _a.sent();
-                    tables = wrapper.findAll('table');
-                    expect(wrapper.vm.$data.response.resultInfo.code).toBe("sample");
-                    expect(tables.at(1).exists()).toBe(true);
-                    return [2 /*return*/];
-            }
-        });
-    }); });
+    it('output table does not exist', function () {
+        var wrapper = factory();
+        var tables = wrapper.findAll('table');
+        expect(tables.length).toBe(1);
+    });
+    it('output table  exists', function () {
+        var wrapper = factory({ response: {
+                resultInfo: {
+                    code: "sample"
+                }
+            } });
+        var tables = wrapper.findAll('table');
+        expect(wrapper.vm.$data.response.resultInfo.code).toBe("sample");
+        expect(tables.at(1).exists()).toBe(true);
+    });
     it('when triggers a click, response success ', function () { return __awaiter(void 0, void 0, void 0, function () {
         var wrapper, response;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    wrapper = mount(CreateCode);
+                    wrapper = factory();
                     response = {
                         resultInfo: {
                             code: "string",
@@ -108,7 +102,7 @@ describe('CreateCode.vue', function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    wrapper = mount(CreateCode);
+                    wrapper = factory();
                     response = {
                         resultInfo: {
                             code: "string",

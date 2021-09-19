@@ -7,9 +7,19 @@ import axios from "axios"
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>
 
+const factory = (values = {}) => {
+  return mount(CreateCode, {
+    data () {
+      return {
+        ...values
+      }
+    }
+  })
+}
+
 describe('CreateCode.vue', () => {
   it('input table has expeteced colums', () => {
-    const wrapper = mount(CreateCode)
+    const wrapper = factory()
     const tableHeadRows = wrapper.findAll('table > thead > tr > th')
     const tableBodyRows = wrapper.findAll('table > tbody > tr')
 
@@ -18,26 +28,25 @@ describe('CreateCode.vue', () => {
     expect(tableBodyRows.length).toBe(18);
   })
 
-  it('output table does not exist', async () => {
-    const wrapper = mount(CreateCode)
+  it('output table does not exist', () => {
+    const wrapper = factory()
     const tables = wrapper.findAll('table')
     expect(tables.length).toBe(1);
   })
 
-  it('output table  exists', async () => {
-    const wrapper = mount(CreateCode)
-    await wrapper.setData({ response: {
+  it('output table  exists', () => {
+    const wrapper = factory({ response: {
       resultInfo: {
         code: "sample"
       }
-    } })
+    }})
     const tables = wrapper.findAll('table')
     expect(wrapper.vm.$data.response.resultInfo.code).toBe("sample")
     expect(tables.at(1).exists()).toBe(true);
   })
 
   it('when triggers a click, response success ', async () => {
-    const wrapper = mount(CreateCode)
+    const wrapper = factory()
 
     const response: response = {
       resultInfo: {
@@ -89,7 +98,7 @@ describe('CreateCode.vue', () => {
   })
 
   it('when triggers a click, response failure ', async () => {
-    const wrapper = mount(CreateCode)
+    const wrapper = factory()
 
     const response: response = {
       resultInfo: {
