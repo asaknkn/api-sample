@@ -143,7 +143,7 @@ describe('CreateCode.vue', function () {
                             authorizationExpiry: 0
                         }
                     };
-                    mockedAxios.post.mockResolvedValueOnce({ data: response });
+                    mockedAxios.post.mockRejectedValueOnce({ response: { data: response } });
                     return [4 /*yield*/, wrapper.find('button').trigger('click')];
                 case 1:
                     _a.sent();

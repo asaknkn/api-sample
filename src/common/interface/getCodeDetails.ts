@@ -19,7 +19,7 @@ interface data {
   }
   revert: revert
   merchantPaymentId: string
-  amout: amount
+  amount: amount
   requestedAt: number
   expiresAt: number
   canceledAt: number

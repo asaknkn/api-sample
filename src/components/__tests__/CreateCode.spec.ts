@@ -140,7 +140,7 @@ describe('CreateCode.vue', () => {
         authorizationExpiry: 0
       }
     }
-    mockedAxios.post.mockResolvedValueOnce({data: response})
+    mockedAxios.post.mockRejectedValueOnce({response:{data: response}})
     await wrapper.find('button').trigger('click')
     await flushPromises()
 
